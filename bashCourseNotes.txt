@@ -1,0 +1,438 @@
+cd bashCourse/
+
+#Search all files in the current directory for "foam
+        -- grep "foam" *
+
+#Make sub directory as well as any additional children directories
+        -- mkdir -p Section_2_Assignment/one/one.one
+        -- mkdir -p Section_2_Assignment/two/two.two
+        -- mkdir -p Section_2_Assignment/three/three.three
+
+#Search the current directory and its childre (recursive) for "foam"
+        -- grep -r "foam" *
+
+#Sorting for words, numbers and absolute numbers
+        -- vi words
+        -- vi nums
+        -- sort words
+        -- cat words
+        -- sort nums
+        -- sort -n nums
+        -- vi months
+        -- sort -n nums
+        -- sort -n months
+                -- alphabetic sort
+        -- sort -M months
+                -- sort according to months
+
+#Processor status with "flag"
+        -- ps -elf
+
+#Disk usage with numeric sort showing largest files first
+        -- du -sh * | sort -nr
+
+#mount command
+        -- sudo mount -o rw -t vfat /dev/sdb1 /media/disk
+        -- umount /media/disk
+
+#gzip and zip
+        -- gzip will not compress directories
+        -- gzip file.txt --> will give you file.txt.gz, original files no longer exists
+        -- gzip -d text.txt.gz
+
+        -- zip  file.zip file.txt--> original remains
+        -- zip -r doc.zip Documents/
+        -- unzip to decompress the file
+
+#tar command
+        -- tar -cvf doc.tar /home/sean/Documents/  --> c for create, v for verbose, f for filename
+        -- tar -xvf doc.tar
+
+#ssh keys
+        -- ssh-keygen -t rsa
+
+#iptables
+        -- tables, chains and targets
+        -- default is to allow packets
+        -- iptables -A INPUT -s 1.1.1.1 -j REJECT
+                -- A - add a rule
+                -- s source IP
+                -- j what to do with the packets that match
+        -- iptables -L --> list the current rules
+        -- iptables -D INPUT -s 1.1.1.1 -j REJECT  --> delete a rule
+
+#ufw -uncomplicated firewall
+        -- ufw default deny incoming
+        -- ufw default allow outgoing
+        -- ufw allow ssh (or port number)
+
+#pushd - popd
+        -- pushes a directory onto the stack and does a cd
+        -- pops a directory off of the stack and does a cd
+
+#!pu
+        -- executes the most recent command starting with "pu"
+
+#history
+        -- !(then the line number)
+
+#environment variables
+        -- local and global
+        -- printenv [variable_name]
+        -- echo $HOME - must be precended by a $
+
+#set command
+        -- set - displays all global variables
+        -- set vs env
+                Since set is a built-in shell command, it also sees shell-local
+                variables (including shell functions). env on the other hand
+                is an independent executable; it only sees the variables that
+                the shell passes to it, or environment variables. set can also
+                report shell options (with the -o switch) which env doesn't.
+        -- local vars --> lower case
+        -- global vars --> all upper case
+        -- my_var="Hello" --> local var
+        -- export my_var  --> global var, available to all child processes
+        -- unset my_var --> clears the var
+
+#$PATH
+        -- search path for processes
+           PATH=$PATH:/new/directory
+
+#Startup intialization scripts
+        -- /etc/profile --> default for all users
+        -- .bashrc --> user specific
+        -- .bash_profile --> on some systems
+        -- .bash_login --> on some systems
+        -- .profile --> user specific
+        -- /etc/profile.d directory --> application specific inits, exec'd by the shell on login
+        -- users can modify this directory as required
+
+#Variable arrays
+        #!/bin/bash
+        my_array=(one two three four five)
+        echo $my_array --> one
+        echo ${my_array[2]} --> three
+        echo ${my_array[*]} --> one two three four five
+        my_array[2]=seven --> changes three to seven
+
+#User management
+        --vi /etc/passwd
+        -- root     :x                              :0  :0  :root     :/root   :/bin/bash
+        -- user name:password location (shadow file):UID:GID:text desc:home dir:default shell
+
+        -- system accounts reserve < 500 for uid
+        -- vi /etc/shadow --> can only be accessed by the login program
+
+        -- sean     :$y$j9T$HzZJ2/1KcJAYzvsCvQoFu/$9rMKbSnz7/rM65E/Jn5/K0xJrwSxUIBoxMs9r/nkdO1:19399                        :0:99999                                                                     :7                                      :                                                   :                    :
+        -- user name:encrypted password                                                       :last pass change (jan 1,1970):min days before pass can be changed:num days before password must be changed:num days before password change warning:num days after expired the account will be disabled:date since disabling:future use
+
+        -- useradd -D --> default parms for new users
+                GROUP=100               --> default group
+                HOME=/home              --> location of home directory
+                INACTIVE=-1             --> accnt can't be disable when passwd expires
+                EXPIRE=                 --> accnt can't set to expire on a set date
+                SHELL=/bin/sh           --> default shell
+                SKEL=/etc/skel          --> skeleton dir used to create new accnt
+                CREATE_MAIL_SPOOL=no    --> create mail account for accnt
+        -- userdel -r user --> removes user and their home directory
+        -- usermod --> -l changes login name, -L lock accnt, -p change password, -U unlock accnt
+        -- passwd
+        -- chage - force user to change password on next login
+                chage -l sean
+                Last password change                                    : Feb 11, 2023
+                Password expires                                        : never
+                Password inactive                                       : never
+                Account expires                                         : never
+                Minimum number of days between password change          : 0
+                Maximum number of days between password change          : 99999
+                Number of days of warning before password expires       : 7
+
+#User groups
+        --  /etc/groups
+        -- sambashare:x             :135:sean,megan,tammy
+        -- group name:group password:GID:group membership
+        -- groupadd testGroup
+        -- usermod -G testGroup sean
+        -- groupmod -n testedGroup testGroup
+
+#File permissions
+        -- ls -l
+        -- first char
+                -- "-" file
+                -- "d" directory
+                -- "l" link
+                -- "c" character device
+                -- "b" block device
+                -- "n" network device
+        -- UGO - user group other
+        -- rwx - read write execute
+        -- umask 0022
+                -- sticky bit
+                -- Perms                Binary          Octal           Desciptions
+                   - - -                000             0               No perms
+                   - - x                001             1               Execute
+                   - w -                010             2               Write
+                   - w r                011             3               Write + execute
+                   r - -                100             4               read
+                   r - x                101             5               read + execute
+                   r w -                110             6               read + write
+                   r w x                111             7               read, write, execute
+        -- touch test_file
+        -- ls -l --> -rw-r--r-- --> 644
+        -- full permission for files is 666
+        -- full permission for directories is 777
+        -- 666 - 022 = 644 --> -rw-r--r--
+        -- umask 002 --> changes umask
+        -- 666 - 002 = 664 --> rw-rw-r--
+
+        -- chmod 760 file_name -- > rwxrw----
+        -- chmod u+x file_name
+        -- chmod +x file_name --> adds x to user, group and other
+
+        -- chown root:root file_name
+        -- chgrp group_name file_name
+
+        -- sticky bit - permission remain after process has ended
+                -- chmod g+s directory_name
+                -- umask 002
+                -- touch test_dir/file
+                -- ls -l test_dir
+                        -- -rw-rw-r-- 1 sean test_dir ...
+
+#Scripting
+        #!/bin/bash --> # is ignored for first line of scipts, indicates what shell to run the script under
+        echo "Hello, World!"
+        echo UID: $UID
+
+        vars - can be up to 20 characters of letters, numbers and _
+        val1=1 --> don't add spaces or it will try to execute up until the space
+
+        echo $val1; echo $val2 --> can put several statements on the same line
+
+        echo "The date is $(date)"
+
+        today=$(date +%y%m%d) ; echo "Today's date is $today"
+
+        > --> redirect output to a file overwriting
+        >> --> redirect output to a file appending
+        < --> redirects input to a funtion/program
+
+        #!/bin/bash
+        echo "hi" > hi.txt
+        cat hi.txt
+        echo "hello" >> hi.txt
+        cat hi.txt
+        wc < hi.txt
+
+        -- outputs 2 2 9 --> num words, num lines and bytes
+
+           apt list --installed | sort -r > packages.txt
+
+        BASH MATH
+        -- integers only
+           val1=$[1+5]
+           val2=$[$val1*2]
+           echo $val1 ; echo $val2
+        -- prints 6 <cr> 12 <cr>
+
+        -- floating point numbers using bc (bash calculator)
+           val3=$(echo "scale=4; $val1 / $val2" | bc) ; echo $val3
+        -- outputs .5000
+
+        IF STATEMENT
+
+            #!/bin/bash
+
+            if ls -l            # executes "ls -l" first and displays results, if successful completion --> then --> else
+            then
+                echo "then portion"
+            fi
+
+            if dls -l           # this will not execute and display "dls: command not found
+            then
+                echo "then portion"
+            else
+                echo "else portion"
+            fi
+
+            if dls -l
+            then
+                echo "then portion"
+            elif echo $UID
+            then
+                echo "elif portion"
+            elif uname
+            then
+                echo "another elif portion"
+            else
+                echo "else portion"
+            fi
+
+        CONDITIONALS
+                Integers
+                -- n1 -eq n2
+                -- n1 -ge n2
+                -- n1 -gt n2
+                -- n1 -le n2
+                -- n1 -lt n2
+                -- n1 -ne n2
+
+                Strings
+                -- str1 = str2
+                -- str1 != str2
+                -- str1 < str2
+                -- str1 > str2
+                -- -n str1  --> length > 0
+                -- -z str1  --> length = 0
+
+                Files
+                        ## all of these ask "does the file exist" and
+                -- -r file         --> is readable
+                -- -s file         --> is not empty
+                -- -w file         --> is writeble
+                -- -x file         --> is executable
+                -- -O file         --> is owned by current user
+                -- -G file         --> is group same as current user group
+                -- file -nt file2  --> file is newer than file2
+                -- file -ot file2  --> file is older than file2
+
+                #!/bin/bash
+
+                value1=10
+                value2=11
+
+                if [ $value1 -gt 5 ]; then     # not the spaces after [ and before ], semi is just so then can be on the same line, better asthetics
+                        echo "The value $value1 is greater than 5"
+                fi
+
+                if [ $val1 \> $val2 ]; then
+                        echo "greater than"
+                else
+                        echo "less than"
+                fi
+
+                dir=/home/sean
+
+                if [ -d $dir ]; then
+                        echo "The $dir directory exists"
+                else
+                        echo "The $dir directory does not exist"
+                fi
+
+                touch /home/sean/file
+
+                if [ -d $dir ] && [ -w $dir/file ]; then
+                        echo "The $dir directory exists and the file exists and we can write to it"
+                else
+                        echo "The directory does not exist or the file is not writeable"
+                fi
+
+        LOOPING
+
+                #!/bin/bash
+                for package in $(apt list --installed) ; do
+                        echo "Package: $packate"
+                        sleep 2
+                done
+
+                #!/bin/bash
+                for package in $(apt list --installed) ; do
+                        echo "Package: $package"
+                        sleep 2
+                done
+
+                #!/bin/bash
+
+                # strings of the form $'...' are called ANSI C-quoted strings.
+                # Input Field Seperator
+                IFS=$'\n'
+                ## why don't we need to set IFS to this again after setting it to :
+
+                #for entry in $(cat /etc/passwd); do
+                #        echo "Values in $entry --"
+                #
+                #        # when the for ends : disappers and $'\n' returns because of its scope
+                #        IFS=:
+                #
+                #        for value in $entry; do
+                #                echo $value
+                #        done
+                #        # $'\n' is again the value for IFS
+                #done
+
+                IFS=:
+
+                for folder in $PATH; do
+                        echo "$folder: -----------------------------------------------"
+
+                        for file in $folder/*; do
+                                if [ -x $file ]; then
+                                        echo " $file"
+                                fi
+                        done
+                done
+
+                for i in {1..10}; do
+                        if [ $i -lt 5 ]; then
+                        echo "$i: lower half"
+                        elif [ $i -eq 5 ]; then
+                                echo "$i: half"
+                        else
+                                echo "$i: upper half"
+                        fi
+                done
+
+        USER INPUT
+                #!/bin/bash
+
+                total=$[ $1 + $2 ]
+                echo "the first parameter is $1"
+                echo "the second parameter is $2"
+                echo "the total is $total"
+                echo "the script name is $0"
+
+                #is the first parameter blank
+                if [ -n "$1" ]; then
+                        echo "$1"
+                else
+                        echo "We did not get at least one parameter"
+                fi
+
+                # this gives you the number of parameter passed in
+                if [ $# == 2 ]; then
+                        echo "$1 and $2"
+                else
+                        echo "We did not get at two parameters"
+                fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
