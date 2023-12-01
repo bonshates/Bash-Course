@@ -1,0 +1,14 @@
+#!/bin/bash
+
+value=10 #global variable
+
+function add {
+	local temp=$[$value + 5] #temp is a local variable
+	echo "Local temp is: $temp"
+	result=$[$temp * 2]  #result is a global variable
+}
+
+temp=-4
+add
+echo "The result is $result"  #proof that the result variable in the function is global
+echo "Global temp is: $temp"  #expect -4 to be printed

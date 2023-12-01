@@ -1,0 +1,43 @@
+#!/bin/bash
+
+value1=10
+value2=11
+
+if [ $value1 -gt 5 ]; then 
+	echo "The value $value1 is greater than 5"
+fi
+
+val1="str"
+val2="abc"
+
+if [ $val1 = $val2 ]; then
+	echo "Welcome $UID"
+else
+	echo "Not equal"
+fi
+
+if [ $val1 \> $val2 ]; then
+	echo "greater than"
+else
+	echo "less than"
+fi
+ 
+dir=/home/sean
+
+if [ -d $dir ]; then
+	echo "The $dir directory exists"
+else
+	echo "The $dir directory does not exist"
+fi
+
+if [ -d $dir ] && [ -w $dir/file ]; then
+	echo "The $dir directory exists and the file exists and we can write to it"
+else
+	echo "The directory does not exist or the file is not writeable"
+fi
+
+if [ -d $dir ] || [ -w $dir/file ]; then
+	echo "The $dir directory exists and the file exists and we can write to it"
+else
+	echo "The directory does not exist or the file is not writeable"
+fi

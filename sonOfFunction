@@ -1,0 +1,25 @@
+#!/bin/bash
+
+function add {
+
+	if [ $# -eq 0 ] || [ $# -gt 2 ]; then
+		echo -1
+	elif [ $# -eq 1 ]; then
+		echo $[$1 + $1]
+	else 
+		echo $[$1 + $2]
+	fi
+}
+
+result=$(add 1)
+echo "We expect the result to be 2 and the result is: $result"
+
+result1=$(add 3 4)
+echo "We expect the result to be 7 and the result is: $result1"
+
+result2=$(add)
+echo "We expect the result to be -1 and the result is: $result2"
+
+result3=$(add 3 4 5)
+echo "We expect the result to be -1 and the result is: $result"
+

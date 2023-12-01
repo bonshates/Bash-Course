@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#-n eats the new line character
+echo -n "Enter your name: "
+read name 
+echo "Hello, $name"
+
+read -p "Enter the date: " month day year
+echo "Date is $month $day $year"
+
+read -t 3 -p "Enter a value: " val
+echo "The value is $val"
+
+read -s -p "Silent value collection: " silValue
+echo "The value is $silValue"
+
+cat test | while read line; do
+	echo $line
+done
+
+echo "Finished processing the file."

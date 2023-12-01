@@ -1,0 +1,21 @@
+#!/bin/bash
+
+total=$[ $1 + $2 ]
+echo "the first parameter is $1"
+echo "the second parameter is $2"
+echo "the total is $total"
+echo "the script name is $0"
+
+#is the first parameter blank
+if [ -n "$1" ]; then
+	echo "$1"
+else
+	echo "We did not get at least one parameter"
+fi	
+
+# this gives you the number of parameter passed in
+if [ $# == 2 ]; then
+	echo "$1 and $2"
+else
+	echo "We did not get at two parameters"
+fi

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# This is a comment line
+
+echo "Hello, World!"
+ 
+echo UID: $UID
+
+val1=1
+val2="Text"
+
+echo $val1; echo $val2
+
+echo "The date is $(date)"
+
+today=$(date +%y%m%d)
+echo "Today's date is $today"
+
+echo "hi" > hi.txt
+echo "hello" >> hi.txt
+echo "and again" >> hi.txt
+cat hi.txt
+wc < hi.txt
+
+apt list --installed | sort -r > packages.txt
+cat packages.txt
+
+val1=$[1+5]
+val2=$[$val1*2]
+echo $val1 ; echo $val2      
+
+val3=$(echo "scale=4; $val1 / $val2" | bc)
+echo $val3
+
+ONE=1
+TWO=2
+result=$(echo "scale=2; $ONE / $TWO" | bc)
+echo $result > division
+cat division
+

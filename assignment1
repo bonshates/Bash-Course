@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for i in {1..10}; do
+	if [ $i -lt 5 ]; then
+	echo "$i: lower half"
+	elif [ $i -eq 5 ]; then
+		echo "$i: half"
+	else 
+		echo "$i: upper half"
+	fi
+done
+

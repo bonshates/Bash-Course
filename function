@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function name {
+	echo "In the name function"	
+}
+
+name2 () {
+	echo "In the name2 function"
+}
+
+name
+name2
+function mult {
+	read -p "Enter a value: " value
+	echo $[ $value * 2 ] 
+}
+
+result=$(mult)
+echo "The result is $result"
+
+

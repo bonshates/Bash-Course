@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if ls -l
+then
+    echo "then portion"
+fi
+
+if dls -l
+then
+    echo "then portion"
+else
+    echo "else portion"
+fi
+
+if dls -l
+then
+    echo "then portion"
+elif echo $UID
+then
+    echo "elif portion"
+elif uname
+then
+    echo "another elif portion"
+else
+    echo "else portion"
+fi
+
