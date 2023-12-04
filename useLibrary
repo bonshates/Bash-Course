@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source library	#include statement
+#. ./library    #same as source statement
+
+val1=10
+val2=3
+
+result=$(mult $val1 $val2)
+
+echo "The result is $result"

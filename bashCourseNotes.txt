@@ -506,13 +506,54 @@ cd bashCourse/
 		echo "We expect the result to be -1 and the result is: $result2"
 
 		result3=$(add 3 4 5)
-		echo "We expect the result to be -1 and the result is: $result"
+		echo "We expect the result to be -1 and the result is: $result3"
 
 
 
+	EXTERNAL LIBRARIES
+		library file	
+			#!/bin/bash
+
+			function mult {
+        			echo $[$1 * $2]
+			}
+
+		useLibrary file
+			#!/bin/bash
+	
+			source library	#include statement
+			#. ./library    #same as source statement
+
+			val1=10
+			val2=3
+
+			result=$(mult $val1 $val2)
+
+			echo "The result is $result"
 
 
+	SED
+		echo "This is a test" | sed 's/test/big test/ --> results in 'This is a big test'
 
+		echo "This is a test" | sed 's|test|big test| --> results in 'This is a big test'
+
+		echo "This is a test" | sed 's\test\big test\ --> results in 'This is a big test'  doesn't work on the Mac
+
+		test.txt file
+			This is sed test command
+			This is sed test command
+			This is sed test command
+
+		sed 's/is/was/' test.txt		--> does not change the original file only outputs to the screen, only replaces the first occurrence 
+			Thwas is sed test command
+			Thwas is sed test command
+			Thwas is sed test command
+
+
+		sed -i 's/is/was/' test.txt		--> this changes the original file only outputs to the screen, only replaces the first occurrence
+		sed -i -e 's/is/was/;s/command/run/' test.txt		--> multiple commands on one line
+		sed 's/is/was/g' test.txt		--> this changes all occurrences of is to was
+		sed '2d' test.txt			--> deletes the second line
 
 
 
