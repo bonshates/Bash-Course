@@ -18,6 +18,7 @@ B A C S       x
 B A C T       x
 B A C L       x
 B A C N       x
+
 B A D E       x
 B A D D       x
 B A D H       x
@@ -28,76 +29,84 @@ B A D S       x
 B A D T       x
 B A D L       x
 B A D N       x
-B A E E
-B A E D
-B A E H
-B A E K
-B A E Y
-B A E R
-B A E S
-B A E T
-B A E L
-B A E N
-B A O E
-B A O D
-B A O H
-B A O K
-B A O Y
-B A O R
-B A O S
-B A O T
-B A O L
-B A O N
-B A R E
-B A R D
-B A R H
-B A R K
-B A R Y
-B A R R
-B A R S
-B A R T
-B A R L
-B A R N
-B A S E
-B A S D
-B A S H
-B A S K
-B A S Y
-B A S R
-B A S S
-B A S T
-B A S L
-B A S N
-B A T E
-B A T D
-B A T H
-B A T K
-B A T Y
-B A T R
-B A T S
-B A T T
-B A T L
-B A T N
-B A L E
-B A L D
-B A L H
-B A L K
-B A L Y
-B A L R
-B A L S
-B A L T
-B A L L
-B A L N
-B A N E
-B A N D
-B A N H
-B A N K
-B A N Y
-B A N R
-B A N S
-B A N T
-B A N L
-B A N N
+
+B A E E        x
+B A E D        x
+B A E H        x
+B A E K        x
+B A E Y        x
+B A E R        x
+B A E S        x
+B A E T        x
+B A E L        x
+B A E N        x
+
+B A O E        x
+B A O D        x
+B A O H        x
+B A O K        x
+B A O Y        x
+B A O R        x
+B A O S        x
+B A O T        x
+B A O L        x
+B A O N        x
+
+B A R E         x
+B A R D         x
+B A R H         x
+B A R K         x
+B A R Y         x
+B A R R         x
+B A R S         x
+B A R T         x
+B A R L         x
+B A R N         x
+
+B A S E        x
+B A S D        x
+B A S H        x
+B A S K        x
+B A S Y        x
+B A S R        x
+B A S S        x
+B A S T        x
+B A S L        x
+B A S N        x
+
+B A T E        x
+B A T D        x
+B A T H        x
+B A T K        x
+B A T Y        x
+B A T R        x
+B A T S        x
+B A T T        x
+B A T L        x
+B A T N        x
+
+B A L E        x
+B A L D        x
+B A L H        x
+B A L K        x
+B A L Y        x
+B A L R        x
+B A L S        x
+B A L T        x
+B A L L        x
+B A L N        x
+
+B A N E        x
+B A N D        x
+B A N H        x
+B A N K        x
+B A N Y        x
+B A N R        x
+B A N S        x
+B A N T        x
+B A N L        x
+B A N N        x
+
 B E A E
 B E A D
 B E A H
@@ -108,6 +117,7 @@ B E A S
 B E A T
 B E A L
 B E A N
+
 B E C E
 B E C D
 B E C H
@@ -118,6 +128,7 @@ B E C S
 B E C T
 B E C L
 B E C N
+
 B E D E
 B E D D
 B E D H
@@ -128,6 +139,7 @@ B E D S
 B E D T
 B E D L
 B E D N
+
 B E E E
 B E E D
 B E E H
@@ -138,6 +150,7 @@ B E E S
 B E E T
 B E E L
 B E E N
+
 B E O E
 B E O D
 B E O H
@@ -148,6 +161,7 @@ B E O S
 B E O T
 B E O L
 B E O N
+
 B E R E
 B E R D
 B E R H
@@ -157,6 +171,7 @@ B E R R
 B E R S
 B E R T
 B E R L
+
 B E R N
 B E S E
 B E S D
@@ -168,6 +183,7 @@ B E S S
 B E S T
 B E S L
 B E S N
+
 B E T E
 B E T D
 B E T H
@@ -178,6 +194,7 @@ B E T S
 B E T T
 B E T L
 B E T N
+
 B E L E
 B E L D
 B E L H
@@ -188,6 +205,7 @@ B E L S
 B E L T
 B E L L
 B E L N
+
 B E N E
 B E N D
 B E N H
@@ -198,6 +216,7 @@ B E N S
 B E N T
 B E N L
 B E N N
+
 B I A E
 B I A D
 B I A H
@@ -208,6 +227,7 @@ B I A S
 B I A T
 B I A L
 B I A N
+
 B I C E
 B I C D
 B I C H
@@ -218,6 +238,7 @@ B I C S
 B I C T
 B I C L
 B I C N
+
 B I D E
 B I D D
 B I D H
