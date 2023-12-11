@@ -1,3 +1,5 @@
 This is a test of the sed command
 This is a test of the sed command
+This is an inserted line.
+This is an inserted line.
 This is a test of the sed command

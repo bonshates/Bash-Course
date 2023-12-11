@@ -416,10 +416,10 @@ cd bashCourse/
                        -c) echo "found the c option";;
                         *) echo "$1 is not an option";;
                    esac
-                   shift 
+                   shift
                done
 
-		seanbates@Rancid bashCourse % ./case  
+		seanbates@Rancid bashCourse % ./case
 		seanbates@Rancid bashCourse % ./case a
 		a is not an option
 		seanbates@Rancid bashCourse % ./case -a
@@ -475,7 +475,7 @@ cd bashCourse/
 		name2
 		function mult {
 			read -p "Enter a value: " value
-			echo $[ $value * 2 ] 
+			echo $[ $value * 2 ]
 		}
 
 		result=$(mult)
@@ -491,7 +491,7 @@ cd bashCourse/
 				echo -1
 			elif [ $# -eq 1 ]; then
 				echo $[$1 + $1]
-			else 
+			else
 				echo $[$1 + $2]
 			fi
 		}
@@ -533,27 +533,46 @@ cd bashCourse/
 
 
 	SED
-		echo "This is a test" | sed 's/test/big test/ --> results in 'This is a big test'
+		echo "This is a test" | sed 's/test/big test/ --> results in 'This is a big test'   --> This is a big test
+		echo "This is a test" | sed 's|test|big test| --> results in 'This is a big test'   --> same command with different delim
+		echo "This is a test" | sed 's\test\big test\ --> results in 'This is a big test'   --> same command with different delim but doesn't work on the Mac
 
-		echo "This is a test" | sed 's|test|big test| --> results in 'This is a big test'
-
-		echo "This is a test" | sed 's\test\big test\ --> results in 'This is a big test'  doesn't work on the Mac
-
-		test.txt file
+		vim test.txt file
 			This is sed test command
 			This is sed test command
 			This is sed test command
 
-		sed 's/is/was/' test.txt		--> does not change the original file only outputs to the screen, only replaces the first occurrence 
+		sed 's/is/was/' test.txt		--> does not change the original file only outputs to the stdout, only replaces the first occurrence
 			Thwas is sed test command
 			Thwas is sed test command
 			Thwas is sed test command
 
-
-		sed -i 's/is/was/' test.txt		--> this changes the original file only outputs to the screen, only replaces the first occurrence
+  sed -i 's/is/was/' test.txt		                  --> this changes the original file and only replaces the first occurrence
 		sed -i -e 's/is/was/;s/command/run/' test.txt		--> multiple commands on one line
-		sed 's/is/was/g' test.txt		--> this changes all occurrences of is to was
-		sed '2d' test.txt			--> deletes the second line
+		sed 's/is/was/g' test.txt		                    --> this changes all occurrences of is to was
+		sed '2d' test.txt			                           --> deletes the second line
+		sed -i '2s/command/asdasdf/' test.txt			       --> only does substitution on the second line
+  sed -i '3i This is an inserted line.' test.txt --> inserts before line 3
+  sed -i '3a This is an inserted line.' test.txt --> inserts after line 3
+
+GAWK
+  gawk '{print $1}' test.txt                --> results in This several times
+  gawk -F: '{print "User: " $1 "\nHome Directory: " $6"\n"}' /etc/passwd --> sets delim char to : and print first and sixth field
+  echo "My name is Sean" | gawk '{$4="bonshates"; print $0}'             --> My name is bonshates
+
+REGEX
+  regextester.com
+
+        - special characters .*[]^${}\+?|()
+        - ^pattern$                           --> beginning of line, pattern and then end of line
+        - ^.it$                               --> be of line, single char, it and then eol
+        - ^[ch]at$                            --> matches on cat or hat but not chat
+        - ^[a-ch-m]at$                        --> matches aat,bat,cat,hat,iat,jat,kat,lat,mat
+        - *                                   --> matches 1 or more times
+        - ?                                   --> match 0 or 1 time
+        - +                                   --> match 1 or more but must be present
+
+
 
 
 
