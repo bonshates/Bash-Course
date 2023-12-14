@@ -564,16 +564,34 @@ REGEX
   regextester.com
 
         - special characters .*[]^${}\+?|()
-        - ^pattern$                           --> beginning of line, pattern and then end of line
-        - ^.it$                               --> be of line, single char, it and then eol
-        - ^[ch]at$                            --> matches on cat or hat but not chat
-        - ^[a-ch-m]at$                        --> matches aat,bat,cat,hat,iat,jat,kat,lat,mat
-        - *                                   --> matches 1 or more times
-        - ?                                   --> match 0 or 1 time
-        - +                                   --> match 1 or more but must be present
+        - ^pattern$                             --> beginning of line, pattern and then end of line
+        - ^.it$                                 --> be of line, single char, it and then eol
+        - ^[ch]at$                              --> matches on cat or hat but not chat
+        - ^[a-ch-m]at$                          --> matches aat,bat,cat,hat,iat,jat,kat,lat,mat
+        - *                                     --> matches 0 or more times
+        - ?                                     --> match 0 or 1 time
+        - +                                     --> match 1 or more but must be present
 
 
-
+        - ^This line of text$                   --> Matches "This line of text"
+                                                --> Does not match "aThis line of text"
+                                                --> Does not match "this line of text"
+        - ^.it$                                 --> Matches fit, bit, sit, kit, lit, ...
+                                                --> Does not match "dwit"
+        - ^[ch]at$                              --> Match cat and hat
+                                                --> Does not match chat
+        - ^colou*r$                             --> Matches color and colour and ALSO colouuuuur
+        - ^colou?r$                             --> Matches color and colour but not colouuuuur
+        - ^colou+r$                             --> Matches colour and colouuuur but not color
+        - ^ca{1}t$                              --> Matches cat but not caat
+        - ^ca{1,2}$                             --> Matches cat and caat but not caaat
+        - ^cat|dog$                             --> Matches cat or dog
+        - ^(b|c)a(r|t)$                         --> Match bar, car, bat and cat
+        - need to match
+                (123)456-7890
+                (123) 456-7890
+                123-456-7890
+                123.456.7890
 
 
 
