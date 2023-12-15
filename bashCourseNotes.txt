@@ -556,7 +556,7 @@ cd bashCourse/
   sed -i '3a This is an inserted line.' test.txt --> inserts after line 3
 
 GAWK
-  gawk '{print $1}' test.txt                --> results in This several times
+  gawk '{print $1}' test.txt                     --> results in This several times
   gawk -F: '{print "User: " $1 "\nHome Directory: " $6"\n"}' /etc/passwd --> sets delim char to : and print first and sixth field
   echo "My name is Sean" | gawk '{$4="bonshates"; print $0}'             --> My name is bonshates
 
@@ -569,9 +569,9 @@ REGEX
         - ^[ch]at$                              --> matches on cat or hat but not chat
         - ^[a-ch-m]at$                          --> matches aat,bat,cat,hat,iat,jat,kat,lat,mat
         - *                                     --> matches 0 or more times
-        - ?                                     --> match 0 or 1 time
+        - ?                                     --> optional, lazy
         - +                                     --> match 1 or more but must be present
-
+        - .                                     --> match any char except line break
 
         - ^This line of text$                   --> Matches "This line of text"
                                                 --> Does not match "aThis line of text"
@@ -588,12 +588,22 @@ REGEX
         - ^cat|dog$                             --> Matches cat or dog
         - ^(b|c)a(r|t)$                         --> Match bar, car, bat and cat
         - need to match
-                (123)456-7890
-                (123) 456-7890
-                123-456-7890
-                123.456.7890
+                (223)456-7890                   --> ^\({0,1}[0-9]{3}\){0,1}[0-9]{3}-[0-9]{4}/
+                (223) 456-7890                  --> ^\({0,1}[0-9]{3}\){0,1}[ ][0-9]{3}-[0-9]{4}/
+                123-456-7890                    --> ^\({0,1}[0-9]{3}\){0,1}-[0-9]{3}-[0-9]{4}/
+                123.456.7890                    --> ^\({0,1}[0-9]{3}\){0,1}[.]{1}[0-9]{3}[.]{1}[0-9]{4}/
+                                his solution    --> /^\(?[2-9][0-9]{2}\)?(| |-|\.)[0-9]{3}( |-|\.)[0-9]{4}$/gm
 
+ASSIGNMENT 11
+        Complete the questions for the Section 11 Assignment
+        Questions for this assignment
 
+        Using sed, change all occurrences of "I"(uppercase i) in the assignment.txt to be your name
+                                                --> sed  's/I/zzzSeanZZZ/g' text.txt
+
+        Using gawk, print out /etc/passwd, find your username, and change it to be something different
+                and have gawk print it out to confirm the change.
+                                                --> cat /etc/passwd | grep "sean" | gawk -F: '{print $0; $1="zzzzSeanzzzz"; print $0}'
 
 
 
