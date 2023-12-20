@@ -407,7 +407,7 @@ cd bashCourse/
                 fi
 
 	CASE
-		#!/bin/bash
+		             #!/bin/bash
 
                while [ -n "$1" ]; do
                    case "$1" in
@@ -438,98 +438,98 @@ cd bashCourse/
 
 
 	SON OF USER INPUT
-		#!/bin/bash
+	    	#!/bin/bash
 
-		#-n eats the new line character
-		echo -n "Enter your name: "
-		read name
-		echo "Hello, $name"
+	    	#-n eats the new line character
+	    	echo -n "Enter your name: "
+	    	read name
+	    	echo "Hello, $name"
 
-		read -p "Enter the date: " month day year
-		echo "Date is $month $day $year"
+	    	read -p "Enter the date: " month day year
+	    	echo "Date is $month $day $year"
 
-		read -t 3 -p "Enter a value: " val
-		echo "The value is $val"
+	    	read -t 3 -p "Enter a value: " val
+	    	echo "The value is $val"
 
-		read -s -p "Silent value collection: " silValue
-		echo "The value is $silValue"
+	    	read -s -p "Silent value collection: " silValue
+	    	echo "The value is $silValue"
 
-		cat test | while read line; do
-        		echo $line
-		done
+	    	cat test | while read line; do
+            		echo $line
+	    	done
 
-		echo "Finished processing the file."
+	    	echo "Finished processing the file."
 
 	FUNCTIONS
-		#!/bin/bash
+	    	#!/bin/bash
 
-		function name {
-			echo "In the name function"	
-		}
+	    	function name {
+	    		echo "In the name function"	
+	    	}
 
-		name2 () {
-			echo "In the name2 function"
-		}
+	    	name2 () {
+	    		echo "In the name2 function"
+	    	}
 
-		name
-		name2
-		function mult {
-			read -p "Enter a value: " value
-			echo $[ $value * 2 ]
-		}
+	    	name
+	    	name2
+	    	function mult {
+	    		read -p "Enter a value: " value
+	    		echo $[ $value * 2 ]
+	    	}
 
-		result=$(mult)
-		echo "The result is $result"
+	    	result=$(mult)
+	    	echo "The result is $result"
 
 	SON OF FUNCTIONS
 
-		#!/bin/bash
+		  #!/bin/bash
 
-		function add {
+		  function add {
 
-			if [ $# -eq 0 ] || [ $# -gt 2 ]; then
-				echo -1
-			elif [ $# -eq 1 ]; then
-				echo $[$1 + $1]
-			else
-				echo $[$1 + $2]
-			fi
-		}
+		  	if [ $# -eq 0 ] || [ $# -gt 2 ]; then
+		  		echo -1
+		  	elif [ $# -eq 1 ]; then
+		  		echo $[$1 + $1]
+		  	else
+		  		echo $[$1 + $2]
+		  	fi
+		  }
 
-		result=$(add 1)
-		echo "We expect the result to be 2 and the result is: $result"
+		  result=$(add 1)
+		  echo "We expect the result to be 2 and the result is: $result"
 
-		result1=$(add 3 4)
-		echo "We expect the result to be 7 and the result is: $result1"
+		  result1=$(add 3 4)
+		  echo "We expect the result to be 7 and the result is: $result1"
 
-		result2=$(add)
-		echo "We expect the result to be -1 and the result is: $result2"
+		  result2=$(add)
+		  echo "We expect the result to be -1 and the result is: $result2"
 
-		result3=$(add 3 4 5)
-		echo "We expect the result to be -1 and the result is: $result3"
+		  result3=$(add 3 4 5)
+		  echo "We expect the result to be -1 and the result is: $result3"
 
 
 
 	EXTERNAL LIBRARIES
 		library file	
-			#!/bin/bash
+			  #!/bin/bash
 
-			function mult {
-        			echo $[$1 * $2]
-			}
+			  function mult {
+          			echo $[$1 * $2]
+			  }
 
 		useLibrary file
-			#!/bin/bash
+			  #!/bin/bash
 	
-			source library	#include statement
-			#. ./library    #same as source statement
+			  source library	#include statement
+			  #. ./library    #same as source statement
 
-			val1=10
-			val2=3
+			  val1=10
+			  val2=3
 
-			result=$(mult $val1 $val2)
+			  result=$(mult $val1 $val2)
 
-			echo "The result is $result"
+			  echo "The result is $result"
 
 
 	SED
