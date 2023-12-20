@@ -605,8 +605,57 @@ ASSIGNMENT 11
                 and have gawk print it out to confirm the change.
                                                 --> cat /etc/passwd | grep "sean" | gawk -F: '{print $0; $1="zzzzSeanzzzz"; print $0}'
 
+ASSIGNMENT BACKUP
+    #!/bin/bash
+
+    # Get the current date
+    DATE=$(date +%y%m%d)
+
+    # Set the archive file name
+    FILE=archive_$DATE.tar.gz
+
+    # Set the configuration and destimnate file location
+    CONFIG_FILE=/archives/file_to_backup
+    DEST=/archive/$FILE
+
+    # Main script
+
+    if [ -f $CONFIG_FILE ]; then
+            echo "config was found"
+    else
+            echo "$CONFIG_FILE was not found"
+            echo "Back up will not be completed"
+            exit
+    fi
+
+    FILE_NO=1       # Start on line 1 of the config file
+
+    exec < $CONFIG_FILE  # Change the input of STDIN to the contents of the config file
+    read FILE_NAME  # Read the first record
+
+    while [ $? -eq 0 ] # create the list of files to backup
+    do
+            if [ -f $FILE_NAME -o -d $FILE_NAME ]; then
+                    FILE_LIST="$FILE_LIST $FILE_NAME"
+            else
+                    echo "$FILE_NAME does not exit"
+                    echo "Back up will no include $FILE_NAME"
+                    echo "continuing..."
+            fi
+
+    done
+
+    tar -czf $DEST $FILE_LIST 2> /dev/null   #send any errors to /dev/null
+
+    echo "Archive is complete"
+    echo "Archive is located at $DEST"
+
+    exit
 
 
+    /etc/cron.daily contains a list of scripts that will be run daily. Verify with run-parts --test /etc/cron.daily
+    When exactly does cron.daily, cron.* run grep run-parts /etc/crontab
+    crontab  minute(0-59) hour (0-23) day (1-31) month (1-12) day of the week (0-7) where 0 and 7 are Sunday
 
 
 
