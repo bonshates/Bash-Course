@@ -1,4 +1,4 @@
-cd bashCourse/
+cd bash_course/
 
 #Search all files in the current directory for "foam
         -- grep "foam" *
