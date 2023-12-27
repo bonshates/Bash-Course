@@ -661,6 +661,32 @@ ASSIGNMENT BACKUP
     When exactly does cron.daily, cron.* run grep run-parts /etc/crontab
     crontab  minute(0-59) hour (0-23) day (1-31) month (1-12) day of the week (0-7) where 0 and 7 are Sunday
 
+DISK SPACE REPORT
+
+    #!/bin/bash
+
+    # Parameters
+
+    DIR=" /var/log /home"
+    DATE="$(date +%m%d%y)"
+
+    exec > Size_Report_$DATE.txt
+
+    # Make the report file
+
+    echo "Top Ten Disk Space Usage"
+    echo "For $DIR Directories"
+
+    for DIR_CHECK in $DIR; do
+            echo "The current dirctory is: $DIR_CHECK"
+            du -Sh $DIR_CHECK 2> /dev/null |
+                    sort -rn |
+                    sed '{11, $d; =}' |   #delete rest of lines once line 11 is readched, the = prints the current line number
+                    sed 'N; s/\n/ /'  |   #using N command (add a new line) and then it substitutes it out
+                    gawk '{printf $1 ":" "\t" $2 "\t" $3 "\n"}'  #1 is the line num, 2 is the size, 3 is the location
+            done
+    exit
+
 
 
 
