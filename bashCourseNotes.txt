@@ -3,12 +3,12 @@ cd bash_course/
 #Search all files in the current directory for "foam
         -- grep "foam" *
 
-#Make sub directory as well as any additional children directories
+#Make sub directory as well as any additional child directories
         -- mkdir -p Section_2_Assignment/one/one.one
         -- mkdir -p Section_2_Assignment/two/two.two
         -- mkdir -p Section_2_Assignment/three/three.three
 
-#Search the current directory and its childre (recursive) for "foam"
+#Search the current directory and its children (recursive) for "foam"
         -- grep -r "foam" *
 
 #Sorting for words, numbers and absolute numbers
@@ -37,19 +37,20 @@ cd bash_course/
 
 #gzip and zip
         -- gzip will not compress directories
-        -- gzip file.txt --> will give you file.txt.gz, original files no longer exists
-        -- gzip -d text.txt.gz
+        -- gzip file.txt                --> will give you file.txt.gz, original files no longer exists
+        -- gzip -k file.txt             --> doesn't delete original file
+        -- gzip -d text.txt.gz          --> decompress file
 
-        -- zip  file.zip file.txt--> original remains
-        -- zip -r doc.zip Documents/
-        -- unzip to decompress the file
+        -- zip  file.zip file.txt       --> original remains
+        -- zip -r doc.zip Documents/    --> recurse the directories
+        -- unzip                        --> decompress the file
 
 #tar command
         -- tar -cvf doc.tar /home/sean/Documents/  --> c for create, v for verbose, f for filename
         -- tar -xvf doc.tar
 
 #ssh keys
-        -- ssh-keygen -t rsa
+        -- ssh-keygen -t rsa            --> generate private and public key in ~/.ssh directory
 
 #iptables
         -- tables, chains and targets
@@ -82,39 +83,39 @@ cd bash_course/
         -- echo $HOME - must be precended by a $
 
 #set command
-        -- set - displays all global variables
+        -- set                  --> displays all global variables
         -- set vs env
                 Since set is a built-in shell command, it also sees shell-local
                 variables (including shell functions). env on the other hand
                 is an independent executable; it only sees the variables that
                 the shell passes to it, or environment variables. set can also
                 report shell options (with the -o switch) which env doesn't.
-        -- local vars --> lower case
-        -- global vars --> all upper case
-        -- my_var="Hello" --> local var
-        -- export my_var  --> global var, available to all child processes
-        -- unset my_var --> clears the var
+        -- local vars           --> lower case
+        -- global vars          --> all upper case
+        -- my_var="Hello"       --> local var
+        -- export my_var        --> global var, available to all child processes
+        -- unset my_var         --> clears the var
 
 #$PATH
         -- search path for processes
            PATH=$PATH:/new/directory
 
 #Startup intialization scripts
-        -- /etc/profile --> default for all users
-        -- .bashrc --> user specific
-        -- .bash_profile --> on some systems
-        -- .bash_login --> on some systems
-        -- .profile --> user specific
-        -- /etc/profile.d directory --> application specific inits, exec'd by the shell on login
+        -- /etc/profile                         --> default for all users
+        -- .bashrc                              --> user specific
+        -- .bash_profile                        --> on some systems
+        -- .bash_login                          --> on some systems
+        -- .profile                             --> user specific
+        -- /etc/profile.d directory             --> application specific inits, exec'd by the shell on login
         -- users can modify this directory as required
 
 #Variable arrays
         #!/bin/bash
         my_array=(one two three four five)
-        echo $my_array --> one
-        echo ${my_array[2]} --> three
-        echo ${my_array[*]} --> one two three four five
-        my_array[2]=seven --> changes three to seven
+        echo $my_array                          --> one
+        echo ${my_array[2]}                     --> three
+        echo ${my_array[*]}                     --> one two three four five
+        my_array[2]=seven                       --> changes three to seven
 
 #User management
         --vi /etc/passwd
@@ -122,10 +123,10 @@ cd bash_course/
         -- user name:password location (shadow file):UID:GID:text desc:home dir:default shell
 
         -- system accounts reserve < 500 for uid
-        -- vi /etc/shadow --> can only be accessed by the login program
+        -- vi /etc/shadow                       --> can only be accessed by the login program
 
-        -- sean     :$y$j9T$HzZJ2/1KcJAYzvsCvQoFu/$9rMKbSnz7/rM65E/Jn5/K0xJrwSxUIBoxMs9r/nkdO1:19399                        :0:99999                                                                     :7                                      :                                                   :                    :
-        -- user name:encrypted password                                                       :last pass change (jan 1,1970):min days before pass can be changed:num days before password must be changed:num days before password change warning:num days after expired the account will be disabled:date since disabling:future use
+        -- sean     :$y$j9...Ms9r/nkdO1:19399                        :0                                  :99999                                   :7                                      :                                                   :                    :
+        -- user name:encrypted password:last pass change (jan 1,1970):min days before pass can be changed:num days before password must be changed:num days before password change warning:num days after expired the account will be disabled:date since disabling:future use
 
         -- useradd -D --> default parms for new users
                 GROUP=100               --> default group
@@ -135,8 +136,8 @@ cd bash_course/
                 SHELL=/bin/sh           --> default shell
                 SKEL=/etc/skel          --> skeleton dir used to create new accnt
                 CREATE_MAIL_SPOOL=no    --> create mail account for accnt
-        -- userdel -r user --> removes user and their home directory
-        -- usermod --> -l changes login name, -L lock accnt, -p change password, -U unlock accnt
+        -- userdel -r user              --> removes user and their home directory
+        -- usermod                      --> -l changes login name, -L lock accnt, -p change password, -U unlock accnt
         -- passwd
         -- chage - force user to change password on next login
                 chage -l sean
@@ -150,8 +151,10 @@ cd bash_course/
 
 #User groups
         --  /etc/groups
+
         -- sambashare:x             :135:sean,megan,tammy
         -- group name:group password:GID:group membership
+
         -- groupadd testGroup
         -- usermod -G testGroup sean
         -- groupmod -n testedGroup testGroup
@@ -216,7 +219,7 @@ cd bash_course/
 
         > --> redirect output to a file overwriting
         >> --> redirect output to a file appending
-        < --> redirects input to a funtion/program
+        < --> redirects input to a function/program
 
         #!/bin/bash
         echo "hi" > hi.txt
@@ -227,7 +230,7 @@ cd bash_course/
 
         -- outputs 2 2 9 --> num words, num lines and bytes
 
-           apt list --installed | sort -r > packages.txt
+        apt list --installed | sort -r > packages.txt           --> show packages install with reverse alpha sort
 
         BASH MATH
         -- integers only
@@ -587,11 +590,12 @@ REGEX
         - ^ca{1,2}$                             --> Matches cat and caat but not caaat
         - ^cat|dog$                             --> Matches cat or dog
         - ^(b|c)a(r|t)$                         --> Match bar, car, bat and cat
+
         - need to match
-                (223)456-7890                   --> ^\({0,1}[0-9]{3}\){0,1}[0-9]{3}-[0-9]{4}/
-                (223) 456-7890                  --> ^\({0,1}[0-9]{3}\){0,1}[ ][0-9]{3}-[0-9]{4}/
-                123-456-7890                    --> ^\({0,1}[0-9]{3}\){0,1}-[0-9]{3}-[0-9]{4}/
-                123.456.7890                    --> ^\({0,1}[0-9]{3}\){0,1}[.]{1}[0-9]{3}[.]{1}[0-9]{4}/
+                (223)456-7890                   --> /^\({0,1}[0-9]{3}\){0,1}[0-9]{3}-[0-9]{4}/
+                (223) 456-7890                  --> /^\({0,1}[0-9]{3}\){0,1}[ ][0-9]{3}-[0-9]{4}/
+                123-456-7890                    --> /^\({0,1}[0-9]{3}\){0,1}-[0-9]{3}-[0-9]{4}/
+                123.456.7890                    --> /^\({0,1}[0-9]{3}\){0,1}[.]{1}[0-9]{3}[.]{1}[0-9]{4}/
                                 his solution    --> /^\(?[2-9][0-9]{2}\)?(| |-|\.)[0-9]{3}( |-|\.)[0-9]{4}$/gm
 
 ASSIGNMENT 11

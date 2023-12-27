@@ -1,0 +1,24 @@
+Top Ten Disk Space Usage
+For  /var/log /home Directories
+The current dirctory is: /var/log
+1:	380K	/var/log/apt
+2:	176K	/var/log/unattended-upgrades
+3:	72K	/var/log/cups
+4:	15M	/var/log
+5:	4.0K	/var/log/speech-dispatcher
+6:	4.0K	/var/log/private
+7:	4.0K	/var/log/openvpn
+8:	4.0K	/var/log/nordvpn
+9:	4.0K	/var/log/journal
+10:	4.0K	/var/log/hp/tmp
+The current dirctory is: /home
+1:	1016K	/home/sean/.platformio/packages/framework-arduino-avr/firmwares/wifishield/wifiHD/src/SOFTWARE_FRAMEWORK/COMPONENTS/WIFI/HD/v2.7.0/UCR2/GCC
+2:	1016K	/home/sean/.platformio/packages/framework-arduino-avr/firmwares/wifishield/wifiHD/src/SOFTWARE_FRAMEWORK/COMPONENTS/WIFI/HD/v2.7.0/UCR1/GCC
+3:	1016K	/home/sean/.platformio/.cache/downloads
+4:	1016K	/home/sean/Desktop/from4TB_HD/lainny_home_recover/home/sean/gits/Ender3FirmwareVSCode/.git/objects/bc
+5:	1016K	/home/sean/Desktop/from4TB_HD/lainny_home_recover/home/sean/arduino-1.8.19/libraries/WiFi/extras/wifiHD/src/SOFTWARE_FRAMEWORK/COMPONENTS/WIFI/HD/v2.7.0/UCR2/GCC
+6:	1016K	/home/sean/Desktop/from4TB_HD/lainny_home_recover/home/sean/arduino-1.8.19/libraries/WiFi/extras/wifiHD/src/SOFTWARE_FRAMEWORK/COMPONENTS/WIFI/HD/v2.7.0/UCR1/GCC
+7:	1016K	/home/sean/Desktop/from4TB_HD/lainny_home_recover/home/sean/arduino-1.8.19/hardware/arduino/avr/firmwares/wifishield/wifiHD/src/SOFTWARE_FRAMEWORK/COMPONENTS/WIFI/HD/v2.7.0/UCR2/GCC
+8:	1016K	/home/sean/Desktop/from4TB_HD/lainny_home_recover/home/sean/arduino-1.8.19/hardware/arduino/avr/firmwares/wifishield/wifiHD/src/SOFTWARE_FRAMEWORK/COMPONENTS/WIFI/HD/v2.7.0/UCR1/GCC
+9:	1016K	/home/sean/Desktop/from4TB_HD/archive/home/dad/Desktop/Pictures/DigitalPictures/VariousPhotos
+10:	1016K	/home/sean/.arduino15/packages/arduino/hardware/avr/1.8.6/firmwares/wifishield/wifiHD/src/SOFTWARE_FRAMEWORK/COMPONENTS/WIFI/HD/v2.7.0/UCR2/GCC
