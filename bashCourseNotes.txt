@@ -687,6 +687,32 @@ DISK SPACE REPORT
             done
     exit
 
+NODEJS
+        curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
+        sudo bash nodesource_setup.sh
+        apt install nodejs -y
+        sudo apt install build-essential
+
+        sean@Lainny:~/Desktop/bash_course$ cat hello.js
+            const http = require('http');
+
+            const hostname = 'localhost';
+            const port = 3000;
+
+            const server = http.createServer((req, res) => {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'test-plain');
+                    res.end('Hello, World\n');
+            });
+
+            server.listen(port, hostname, () => {
+                    console.log(`Server running at http://${hostname}:${port}/`);
+            });
+
+            sean@Lainny:~/Desktop/bash_course$ node hello.js
+                Server running at http://localhost:3000/
+            Open http://localhost:3000/
+
 
 
 
