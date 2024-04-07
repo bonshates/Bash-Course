@@ -15,7 +15,7 @@ cd bash_course/
         -- vi words
         -- vi nums
         -- sort words
-        -- cat words
+        -- cat words  
         -- sort nums
         -- sort -n nums
         -- vi months
